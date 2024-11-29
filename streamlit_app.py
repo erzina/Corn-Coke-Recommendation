@@ -8,8 +8,8 @@ import pandas as pd
 # Set page config
 st.set_page_config(page_title="Corn & Coke Recommendation", layout="wide")
 
-api_key = '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'
-client = OpenAI(api_key=api_key)
+api_key = st.secrets["api_key"]
+client = openai.OpenAI(api_key=api_key)
 
 data = pd.read_csv("https://www.dropbox.com/scl/fi/cpts6vqsdjsejmvq26ylv/database.csv?rlkey=ak3496s1nytd2aumzhnst1mo7&st=jaa8tlwp&dl=0")
 data = data.dropna(subset="link_texts_0")
@@ -72,7 +72,7 @@ with st.form("my_form"):
 
     # Displaying output upon form submission
     if submitted:
-        assistant_id = "asst_cZ9bV1sXCsqf3OvDvm2jdKYl"
+        assistant_id = st.secrets["assistant_id"]
         prompt = text_input
         thread_id = startAssistantThread(prompt)
         run_id = runAssistant(thread_id, assistant_id)
