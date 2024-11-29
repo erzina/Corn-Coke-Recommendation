@@ -11,7 +11,7 @@ st.set_page_config(page_title="Corn & Coke Recommendation", layout="wide")
 api_key = st.secrets["api_key"]
 client = openai.OpenAI(api_key=api_key)
 
-data = pd.read_csv("https://github.com/erzina/Corn-Coke-Recommendation/blob/main/python7.py/tabulka3.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/erzina/Corn-Coke-Recommendation/main/python7.py/tabulka3.csv")
 data = data.dropna(subset="link_texts_0")
 data["CSFD_YEAR"] = data["CSFD_YEAR"].astype(int)
 data["rating"] = data["rating"].astype(int)
