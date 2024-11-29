@@ -11,7 +11,7 @@ st.set_page_config(page_title="Corn & Coke Recommendation", layout="wide")
 api_key = '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'
 client = OpenAI(api_key=api_key)
 
-data = pd.read_csv("python7.py/tabulka3.csv")
+data = pd.read_csv("https://www.dropbox.com/scl/fi/cpts6vqsdjsejmvq26ylv/database.csv?rlkey=ak3496s1nytd2aumzhnst1mo7&st=jaa8tlwp&dl=0")
 data = data.dropna(subset="link_texts_0")
 data["CSFD_YEAR"] = data["CSFD_YEAR"].astype(int)
 data["rating"] = data["rating"].astype(int)
