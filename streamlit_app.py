@@ -59,7 +59,7 @@ def count_matches(row, search_strings):
             count += sum(1 for s in search_strings if s == str(row[col]))
     return count
 
-st.image(image="python7.py/baner.png") 
+st.image("baner.png") 
 
 # Title of the app
 st.title("Corn & Coke")
