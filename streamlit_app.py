@@ -88,7 +88,7 @@ with st.form("my_form"):
         tags = content_dict["tags"].split(",")
         tags = [tag.strip() for tag in tags]
         data['match_count'] = data.apply(count_matches, axis=1, search_strings=tags)
-        data_result = data[["ORIGINAL_TITLE",  "rating", "CSFD_YEAR"]]
+        data_result = data[["ORIGINAL_TITLE", "match_count", "rating", "CSFD_YEAR"]]
         if "lowest_year" in content_dict:
             data_result = data_result[data_result["CSFD_YEAR"] > int(content_dict["lowest_year"])]
         data_result = data_result.rename(columns={
