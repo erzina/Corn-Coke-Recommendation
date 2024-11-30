@@ -96,4 +96,4 @@ with st.form("my_form"):
             "rating": "Rating",
             "CSFD_YEAR": "Release Year"
         })
-        st.write(data_result.sort_values(["Rating"], ascending=False).rename(columns={"ORIGINAL_TITLE_1": "Corn & Coke Recommendation"}).head().to_html(index=False).replace("<th>", "<th style='text-align: center'>").replace("<td>", "<td style='text-align: center'>"), unsafe_allow_html=True)
+        st.write(data_result.sort_values(["match_count", "Rating"], ascending=False).rename(columns={"ORIGINAL_TITLE_1": "Corn & Coke Recommendation"}).head().to_html(index=False).replace("<th>", "<th style='text-align: center'>").replace("<td>", "<td style='text-align: center'>"), unsafe_allow_html=True)
