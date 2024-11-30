@@ -88,7 +88,7 @@ with st.form("my_form"):
         tags = content_dict["tags"].split(",")
         tags = [tag.strip() for tag in tags]
         data['match_count'] = data.apply(count_matches, axis=1, search_strings=tags)
-        data_result = data[["ORIGINAL_TITLE", "rating", "CSFD_YEAR"]]
+        data_result = data[["ORIGINAL_TITLE", "rating", "CSFD_YEAR", "match_count"]]
         if "lowest_year" in content_dict:
             data_result = data_result[data_result["CSFD_YEAR"] > int(content_dict["lowest_year"])]
         data_result = data_result.rename(columns={
@@ -96,4 +96,4 @@ with st.form("my_form"):
             "rating": "Rating",
             "CSFD_YEAR": "Release Year"
         })
-        st.write(data_result.sort_values(["match_count", "Rating"], ascending=False).rename(columns={"ORIGINAL_TITLE_1": "Corn & Coke Recommendation"}).head().to_html(index=False).replace("<th>", "<th style='text-align: center'>").replace("<td>", "<td style='text-align: center'>"), unsafe_allow_html=True)
+        st.write(data_result.sort_values(["match_count", "Rating"], ascending=False).rename(columns={"ORIGINAL_TITLE_1": "Corn & Coke Recommendation"})[["Movie Title", "Rating", "Release Year"]].head().to_html(index=False).replace("<th>", "<th style='text-align: center'>").replace("<td>", "<td style='text-align: center'>"), unsafe_allow_html=True)
