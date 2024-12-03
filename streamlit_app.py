@@ -12,12 +12,12 @@ api_key = st.secrets["api_key"]
 client = openai.OpenAI(api_key=api_key)
 
 data = pd.read_csv("database.csv")
-data = data.dropna(subset="link_texts_0")
+data = data.dropna(subset="LINK_TEXTS_0")
 data["CSFD_YEAR"] = data["CSFD_YEAR"].astype(int)
 data["RATING"] = data["RATING"].astype(int)
 
 # Assuming 'data' is your dataframe
-link_columns = [col for col in data.columns if col.startswith('link_texts_')]
+link_columns = [col for col in data.columns if col.startswith('LINK_TEXTS_')]
 
 # Stack the values from all link_texts_* columns into one column
 combined_values = data[link_columns].stack().reset_index(drop=True)
@@ -55,7 +55,7 @@ def retrieveThread(thread_id):
 def count_matches(row, search_strings):
     count = 0
     for col in row.index:
-        if col.startswith('link_texts_'):  # Ensuring only columns named link_texts_ are considered
+        if col.startswith('LINK_TEXTS_'):  # Ensuring only columns named link_texts_ are considered
             count += sum(1 for s in search_strings if s == str(row[col]))
     return count
 
